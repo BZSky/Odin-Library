@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Omni-Library</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="search">
+          <svg
+            width="32px"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <title>filter</title>
+            <path
+              d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z"
+            />
+          </svg>
+          <input type="text" maxlength="100" disabled />
+        </div>
+        <div class="profile">
+          <svg
+            width="32px"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <title>bell-circle</title>
+            <path
+              d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M17,16V15L16,14V11.39C16,10.3 15.73,9.34 15.21,8.53C14.7,7.72 13.96,7.21 13,7V6.5A1,1 0 0,0 12,5.5A1,1 0 0,0 11,6.5V7C10.04,7.21 9.3,7.72 8.79,8.53C8.27,9.34 8,10.3 8,11.39V14L7,15V16H17M13.5,17H10.5A1.5,1.5 0 0,0 12,18.5A1.5,1.5 0 0,0 13.5,17Z"
+            />
+          </svg>
+          <img
+            class="img-interactable"
+            contenteditable
+            tabindex="1"
+            src="./images/duck.png"
+            alt="user profile picture"
+          />
+          <div class="profile-name">Jane Doe</div>
+        </div>
+        <div class="controls">
+          <ul>
+            <li>
+              <button type="button" class="button" id="open-dialog">
+                Add a book
+              </button>
+            </li>
+            <li>
+              <button type="button" class="button" disabled>Upload</button>
+            </li>
+            <li>
+              <button type="button" class="button" disabled>Share</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="logo">
+          <svg
+            width="64px"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <title>library</title>
+            <path
+              fill="white"
+              d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z"
+            />
+          </svg>
+        </div>
+        <ul class="nav">
+          <li>
+            <svg
+              width="32px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <title>home-circle</title>
+              <path
+                fill="white"
+                d="M19.07,4.93C17.22,3 14.66,1.96 12,2C9.34,1.96 6.79,3 4.94,4.93C3,6.78 1.96,9.34 2,12C1.96,14.66 3,17.21 4.93,19.06C6.78,21 9.34,22.04 12,22C14.66,22.04 17.21,21 19.06,19.07C21,17.22 22.04,14.66 22,12C22.04,9.34 21,6.78 19.07,4.93M17,12V18H13.5V13H10.5V18H7V12H5L12,5L19.5,12H17Z"
+              />
+            </svg>
+          </li>
+          <li>
+            <svg
+              width="32px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <title>history</title>
+              <path
+                fill="white"
+                d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"
+              />
+            </svg>
+          </li>
+          <li>
+            <svg
+              width="32px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <title>account-supervisor-circle</title>
+              <path
+                fill="white"
+                d="M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M15.6,8.34C16.67,8.34 17.53,9.2 17.53,10.27C17.53,11.34 16.67,12.2 15.6,12.2A1.93,1.93 0 0,1 13.67,10.27C13.66,9.2 14.53,8.34 15.6,8.34M9.6,6.76C10.9,6.76 11.96,7.82 11.96,9.12C11.96,10.42 10.9,11.5 9.6,11.5C8.3,11.5 7.24,10.42 7.24,9.12C7.24,7.81 8.29,6.76 9.6,6.76M9.6,15.89V19.64C7.2,18.89 5.3,17.04 4.46,14.68C5.5,13.56 8.13,13 9.6,13C10.13,13 10.8,13.07 11.5,13.21C9.86,14.08 9.6,15.23 9.6,15.89M12,20C11.72,20 11.46,20 11.2,19.96V15.89C11.2,14.47 14.14,13.76 15.6,13.76C16.67,13.76 18.5,14.15 19.44,14.91C18.27,17.88 15.38,20 12,20Z"
+              />
+            </svg>
+          </li>
+        </ul>
+        <ul class="nav2">
+          <li>
+            <svg
+              width="32px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <title>help-circle</title>
+              <path
+                fill="white"
+                d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
+              />
+            </svg>
+          </li>
+          <li>
+            <svg
+              width="32px"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <title>incognito-circle</title>
+              <path
+                fill="white"
+                d="M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M14.92 12.81C13.84 12.81 12.95 13.56 12.71 14.56C12.17 14.33 11.66 14.39 11.29 14.55C11.05 13.55 10.15 12.81 9.08 12.81C7.83 12.81 6.82 13.82 6.82 15.07C6.82 16.32 7.83 17.33 9.08 17.33C10.28 17.33 11.24 16.42 11.33 15.25C11.53 15.12 12.04 14.86 12.67 15.26C12.77 16.42 13.73 17.33 14.92 17.33C16.17 17.33 17.18 16.32 17.18 15.07C17.18 13.82 16.17 12.81 14.92 12.81M9.08 13.45C10 13.45 10.7 14.18 10.7 15.07C10.7 15.96 10 16.69 9.08 16.69C8.19 16.69 7.46 15.96 7.46 15.07C7.46 14.18 8.19 13.45 9.08 13.45M14.92 13.45C15.81 13.45 16.54 14.18 16.54 15.07C16.54 15.96 15.81 16.69 14.92 16.69C14 16.69 13.3 15.96 13.3 15.07C13.3 14.18 14 13.45 14.92 13.45M17.83 11.5H6.17V12.17H17.83V11.5M14.15 6.89C14 6.59 13.67 6.43 13.35 6.53L12 7L10.65 6.53L10.61 6.5C10.29 6.43 9.95 6.61 9.84 6.92L8.36 10.83H15.64L14.16 6.92L14.15 6.89Z"
+              />
+            </svg>
+          </li>
+        </ul>
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="cards-container"></div>
+          <div class="dialog-container">
+            <dialog>
+              <form id="addbookform" class="add-book-form">
+                <h2 class="add-book-form-header">Let's add a book!</h2>
+
+                <div class="add-book-form-title">
+                  <input
+                    id="title"
+                    placeholder="Title"
+                    name="title"
+                    type="text"
+                    value=""
+                    size="30"
+                    maxlength="245"
+                    required
+                  />
+                  <label for="title" data-help="Please, input the book's title"
+                    >Book title</label
+                  >
+                </div>
+                <div class="add-book-form-author">
+                  <input
+                    id="author"
+                    placeholder="Author name"
+                    name="author"
+                    type="text"
+                    value=""
+                    size="30"
+                    maxlength="245"
+                    required
+                  />
+                  <label
+                    for="author"
+                    data-help="Please, specify the book's author"
+                    >Author</label
+                  >
+                </div>
+                <div class="add-book-form-pages">
+                  <input
+                    id="pages"
+                    placeholder="Pages"
+                    name="pages"
+                    type="number"
+                    value=""
+                    size="30"
+                    maxlength="100"
+                    required
+                  />
+                  <label for="pages" data-help="Only numbers please"
+                    >Pages</label
+                  >
+                </div>
+                <div class="add-book-form-read">
+                  <input id="read" name="read" type="checkbox" />
+                  <label for="read" data-help="Have you already read this book?"
+                    >Read</label
+                  >
+                </div>
+                <div class="form-submit">
+                  <input
+                    name="submit"
+                    type="submit"
+                    id="submit"
+                    class="submit"
+                    value="Add a book"
+                  />
+                </div>
+              </form>
+              <button
+                autofocus
+                type="reset"
+                onclick="this.closest('dialog').close('cancel')"
+                class="close-dialog"
+              >
+                X
+              </button>
+            </dialog>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
