@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -11,13 +13,17 @@ body {
 }
 
 dialog {
-  display: grid;
+  display: flex;
   margin: auto;
   padding: 0;
-  position: fixed;
   inset: 0;
   z-index: 0;
-  background-color: #bccbde37;
+  height: 400px;
+  width: 500px;
+  overflow: hidden;
+  background: #8a2387;
+  background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+  text-align: center;
   border-radius: 3%;
   box-shadow: 10px 5px 5px rgba(101, 101, 101, 0.694);
   transition: opacity 1s;
@@ -37,11 +43,300 @@ dialog::backdrop {
 }
 
 dialog > form {
+  flex: 1;
+  width: 100%;
+  height: 100%;
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  align-items: start;
+  grid-template-rows: repeat(6, 1fr);
+  align-items: center;
   max-block-size: 80vh;
   max-block-size: 80dvb;
+}
+
+.add-book-form-header {
+  text-transform: uppercase;
+}
+
+.add-book-form-title,
+.add-book-form-author,
+.add-book-form-pages {
+  position: relative;
+  padding: 15px 5% 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+#title,
+#author,
+#pages {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid black;
+  outline: 0;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #fff; /* $white */
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+#title::placeholder,
+#author::placeholder,
+#pages::placeholder {
+  color: transparent;
+}
+
+#title:placeholder-shown ~ label,
+#author:placeholder-shown ~ label,
+#pages:placeholder-shown ~ label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+#title ~ label,
+#author ~ label,
+#pages ~ label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+}
+
+#title:focus ~ label,
+#author:focus ~ label,
+#pages:focus ~ label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #11998e; /* $primary */
+  font-weight: 700;
+}
+
+#title:focus,
+#author:focus,
+#pages:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(
+    to right,
+    #11998e,
+    #38ef7d
+  ); /* $primary, $secondary */
+  border-image-slice: 1;
+}
+
+/* reset input */
+#title:required,
+#title:invalid,
+#author:required,
+#author:invalid,
+#pages:required,
+#pages:invalid {
+  box-shadow: none;
+}
+
+.add-book-form-title,
+.add-book-form-author,
+.add-book-form-pages,
+.add-book-form-read {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+
+.add-book-form-read > label {
+  cursor: pointer;
+}
+
+.add-book-form-read .tgl {
+  display: none;
+}
+
+.add-book-form-read .tgl::-moz-selection,
+.add-book-form-read .tgl:after::-moz-selection,
+.add-book-form-read .tgl:before::-moz-selection,
+.add-book-form-read .tgl *::-moz-selection,
+.add-book-form-read .tgl *:after::-moz-selection,
+.add-book-form-read .tgl *:before::-moz-selection,
+.add-book-form-read .tgl + .tgl-btn::-moz-selection,
+.add-book-form-read .tgl::selection,
+.add-book-form-read .tgl:after::selection,
+.add-book-form-read .tgl:before::selection,
+.add-book-form-read .tgl *::selection,
+.add-book-form-read .tgl *:after::selection,
+.add-book-form-read .tgl *:before::selection,
+.add-book-form-read .tgl + .tgl-btn::selection {
+  background: none;
+}
+.add-book-form-read .tgl + .tgl-btn {
+  outline: 0;
+  display: block;
+  width: 4em;
+  height: 2em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.add-book-form-read .tgl + .tgl-btn:after,
+.add-book-form-read .tgl + .tgl-btn:before {
+  position: relative;
+  display: block;
+  content: "";
+  width: 50%;
+  height: 100%;
+}
+.add-book-form-read .tgl + .tgl-btn:after {
+  left: 0;
+}
+.add-book-form-read .tgl + .tgl-btn:before {
+  display: none;
+}
+.add-book-form-read .tgl:checked + .tgl-btn:after {
+  left: 50%;
+}
+
+.add-book-form-read .tgl-flip + .tgl-btn {
+  padding: 2px;
+  transition: all 0.2s ease;
+  font-family: sans-serif;
+  perspective: 100px;
+}
+.add-book-form-read .tgl-flip + .tgl-btn:after,
+.add-book-form-read .tgl-flip + .tgl-btn:before {
+  display: inline-block;
+  transition: all 0.4s ease;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  line-height: 2em;
+  font-weight: bold;
+  color: #fff;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 4px;
+}
+.add-book-form-read .tgl-flip + .tgl-btn:after {
+  content: attr(data-tg-on);
+  background: #02c66f;
+  transform: rotateY(-180deg);
+}
+.add-book-form-read .tgl-flip + .tgl-btn:before {
+  background: #ff3a19;
+  content: attr(data-tg-off);
+}
+.add-book-form-read .tgl-flip + .tgl-btn:active:before {
+  transform: rotateY(-20deg);
+}
+.add-book-form-read .tgl-flip:checked + .tgl-btn:before {
+  transform: rotateY(180deg);
+}
+.add-book-form-read .tgl-flip:checked + .tgl-btn:after {
+  transform: rotateY(0);
+  left: 0;
+  background: #7fc6a6;
+}
+.add-book-form-read .tgl-flip:checked + .tgl-btn:active:after {
+  transform: rotateY(20deg);
+}
+
+.form-buttons {
+  position: relative;
+}
+
+.form-buttons > button {
+  background: none;
+  border: 0;
+  color: transparent;
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  line-height: 45px;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  text-transform: uppercase;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s ease-in;
+  width: 50px;
+  height: 50px;
+}
+
+.form-buttons > button::before,
+.form-buttons > button::after {
+  background-color: white;
+  content: "";
+  display: block;
+  height: 3px;
+  position: absolute;
+  transform-origin: center left;
+  transition: all 0.2s ease-in;
+  width: 70px;
+  z-index: -1;
+}
+
+.form-buttons > .submit-dialog::before {
+  left: 50%;
+  transform: rotate(90deg);
+}
+
+.form-buttons > .submit-dialog::after {
+  top: 50%;
+  transform: rotate(0deg);
+}
+
+.form-buttons > .close-dialog::before {
+  left: 0;
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.form-buttons > .close-dialog::after {
+  left: 0;
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.form-buttons > button:hover {
+  color: #8a2387;
+}
+
+.form-buttons > .submit-dialog:hover::before {
+  left: 0%;
+  height: 25px;
+  transform: rotate(0deg);
+}
+
+.form-buttons > .submit-dialog:hover::after {
+  bottom: 0%;
+  height: 25px;
+  transform: rotate(0deg);
+}
+
+.form-buttons > .close-dialog:hover::before,
+.form-buttons > .close-dialog:hover::after {
+  height: 25px;
+  transform: rotate(0deg);
+}
+
+.form-buttons > .submit-dialog {
+  left: 20%;
+}
+
+.form-buttons > .close-dialog {
+  left: 80%;
 }
 
 .container {

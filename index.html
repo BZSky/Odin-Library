@@ -198,29 +198,37 @@
                   >
                 </div>
                 <div class="add-book-form-read">
-                  <input id="read" name="read" type="checkbox" />
                   <label for="read" data-help="Have you already read this book?"
-                    >Read</label
+                    >Did you read it?</label
                   >
-                </div>
-                <div class="form-submit">
                   <input
-                    name="submit"
-                    type="submit"
-                    id="submit"
-                    class="submit"
-                    value="Add a book"
+                    class="tgl tgl-flip"
+                    id="read"
+                    name="read"
+                    type="checkbox"
+                    checked
                   />
+                  <label
+                    class="tgl-btn"
+                    data-tg-off="Nope"
+                    data-tg-on="Yeah!"
+                    for="read"
+                  ></label>
+                </div>
+                <div class="form-buttons">
+                  <button name="submit" type="submit" class="submit-dialog">
+                    Save
+                  </button>
+                  <button
+                    autofocus
+                    type="reset"
+                    onclick="this.closest('dialog').close('cancel')"
+                    class="close-dialog"
+                  >
+                    Cancel
+                  </button>
                 </div>
               </form>
-              <button
-                autofocus
-                type="reset"
-                onclick="this.closest('dialog').close('cancel')"
-                class="close-dialog"
-              >
-                X
-              </button>
             </dialog>
           </div>
         </div>
