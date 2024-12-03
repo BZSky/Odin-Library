@@ -12,21 +12,69 @@ body {
   overflow: hidden;
 }
 
+.welcome-overlay {
+  text-align: center;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 0;
+  overflow: hidden;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+  border: 1px solid #696969;
+  border-radius: 3%;
+  box-shadow: 10px 5px 5px rgba(101, 101, 101, 0.694);
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.welcome-overlay button {
+  background: white;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  line-height: 45px;
+  outline: none;
+  overflow: hidden;
+  text-transform: uppercase;
+  width: 100px;
+  height: 100px;
+  border-radius: 5%;
+}
+
+.welcome-overlay button:hover {
+  color: #8a2387;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
 dialog {
   display: flex;
   margin: auto;
   padding: 0;
   inset: 0;
   z-index: 0;
-  height: 400px;
+  height: 500px;
   width: 500px;
   overflow: hidden;
+  color: #ffffffcc;
   background: #8a2387;
   background: linear-gradient(to right, #f27121, #e94057, #8a2387);
   text-align: center;
+  border: 1px solid #696969;
   border-radius: 3%;
   box-shadow: 10px 5px 5px rgba(101, 101, 101, 0.694);
-  transition: opacity 1s;
+  transition: opacity 0.5s ease, visibility 0.5s;
 }
 
 dialog:not([open]) {
@@ -54,7 +102,7 @@ dialog > form {
 }
 
 .add-book-form-header {
-  text-transform: uppercase;
+  color: white;
 }
 
 .add-book-form-title,
@@ -72,11 +120,11 @@ dialog > form {
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #ffffffcc;
   outline: 0;
   font-size: 1.3rem;
   text-align: center;
-  color: #fff; /* $white */
+  color: #fff;
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
@@ -114,7 +162,7 @@ dialog > form {
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: #11998e; /* $primary */
+  color: #7b7b7ba1;
   font-weight: 700;
 }
 
@@ -124,15 +172,10 @@ dialog > form {
   padding-bottom: 6px;
   font-weight: 700;
   border-width: 3px;
-  border-image: linear-gradient(
-    to right,
-    #11998e,
-    #38ef7d
-  ); /* $primary, $secondary */
+  border-image: linear-gradient(to right, #7b7b7bcc, #ffffffcc);
   border-image-slice: 1;
 }
 
-/* reset input */
 #title:required,
 #title:invalid,
 #author:required,
@@ -154,6 +197,7 @@ dialog > form {
 
 .add-book-form-read > label {
   cursor: pointer;
+  color: white;
 }
 
 .add-book-form-read .tgl {
@@ -213,7 +257,7 @@ dialog > form {
 .add-book-form-read .tgl-flip + .tgl-btn:after,
 .add-book-form-read .tgl-flip + .tgl-btn:before {
   display: inline-block;
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
   width: 100%;
   text-align: center;
   position: absolute;
@@ -228,7 +272,7 @@ dialog > form {
 }
 .add-book-form-read .tgl-flip + .tgl-btn:after {
   content: attr(data-tg-on);
-  background: #02c66f;
+  background: #5acc99;
   transform: rotateY(-180deg);
 }
 .add-book-form-read .tgl-flip + .tgl-btn:before {
@@ -244,7 +288,6 @@ dialog > form {
 .add-book-form-read .tgl-flip:checked + .tgl-btn:after {
   transform: rotateY(0);
   left: 0;
-  background: #7fc6a6;
 }
 .add-book-form-read .tgl-flip:checked + .tgl-btn:active:after {
   transform: rotateY(20deg);
@@ -352,7 +395,6 @@ dialog > form {
 .container div {
   font-family: Helvetica;
   font-weight: bold;
-  color: #0c0a09;
 }
 
 .container li {
@@ -426,7 +468,7 @@ li > a {
 }
 
 .sidebar {
-  background-color: #7f1d1d;
+  background: linear-gradient(to right, #e94057, #8a2387);
   display: grid;
   grid-template-rows: 100px 1fr 1fr;
   grid-template-areas: "logo" "nav" "nav2";
@@ -474,11 +516,12 @@ li > a {
 .controls {
   display: grid;
   grid-area: controls;
+  padding-top: 16px;
 }
 
 .controls ul {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto;
   place-items: center;
 }
 
@@ -491,25 +534,19 @@ li > a {
 .button {
   font-size: 1rem;
   font-weight: bold;
-  background-color: #7f1d1d;
+  background: linear-gradient(to right, #e94057, #8a2387);
   color: white;
   border: none;
   border-radius: 2rem;
   padding: 1rem;
   height: 50px;
-  width: 100px;
+  width: 150px;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: #991b1b;
-  transition: 0.7s;
-}
-
-.button:focus,
-.img-interactable:focus {
-  outline-color: transparent;
-  outline-style: solid;
-  box-shadow: 0 0 0 4px #991b1b;
+  box-shadow: 0 0 0 3px #e9405778;
+  transition: 0.5s;
 }
 
 .button:active,
@@ -525,6 +562,13 @@ li > a {
   -webkit-box-shadow: inset 4px 4px 6px 1px rgba(143, 141, 143, 0.6);
   -moz-box-shadow: inset 4px 4px 6px 1px rgba(143, 141, 143, 0.6);
   box-shadow: inset 4px 4px 6px 1px rgba(143, 141, 143, 0.6);
+}
+
+.content.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .content > div {
@@ -545,7 +589,7 @@ li > a {
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-area: cards;
   gap: 2rem;
 }
@@ -561,9 +605,9 @@ li > a {
   border-color: white;
   border-radius: 8px;
   -webkit-box-shadow: 4px 4px 6px 1px rgba(143, 141, 143, 0.6),
-    -5px 0 0 0 #dc2626;
-  -moz-box-shadow: 4px 4px 6px 1px rgba(143, 141, 143, 0.6), -5px 0 0 0 #dc2626;
-  box-shadow: 4px 4px 6px 1px rgba(143, 141, 143, 0.6), -5px 0 0 0 #dc2626;
+    -5px 0 0 0 #e94057;
+  -moz-box-shadow: 4px 4px 6px 1px rgba(143, 141, 143, 0.6), -5px 0 0 0 #e94057;
+  box-shadow: 4px 4px 6px 1px rgba(143, 141, 143, 0.6), -5px 0 0 0 #e94057;
   min-height: 200px;
   background-color: #ffffff;
   color: black;

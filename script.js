@@ -1,4 +1,5 @@
-const myLibrary = [
+const myLibrary = [];
+const templateLibrary = [
   {
     title: "The Ingenious Gentleman Don Quixote of La Mancha",
     author: "Miguel de Cervantes",
@@ -22,11 +23,19 @@ const myLibrary = [
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("#open-dialog");
 const closeButton = document.querySelector(".close-dialog");
+const welcomeOverlay = document.querySelector("#welcome-overlay");
 const form = document.querySelector("form");
 const cards = document.querySelector(".cards-container");
+const contentContainer = document.querySelector(".content");
+const firstBookButton = document.querySelector("#add-first-book-btn");
+const tryButton = document.querySelector("#add-template-books-btn");
 let idCounter = 0;
 
 showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+firstBookButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
@@ -61,6 +70,7 @@ function addBookToLibrary(event) {
   myLibrary.push(book);
   createCard(book);
   event.preventDefault();
+  form.reset();
 }
 
 function createCard(obj) {
@@ -98,6 +108,15 @@ function createCard(obj) {
       </div>
   `;
   cards.appendChild(card);
+  if (cards.children.length === 1) {
+    welcomeOverlay.style.transition = "opacity 0.5s ease";
+    welcomeOverlay.classList.add("hidden");
+    setTimeout(() => {
+      welcomeOverlay.style.display = "none";
+    }, 500);
+    showButton.classList.remove("hidden");
+    contentContainer.classList.remove("welcome");
+  }
   dialog.close();
 }
 
@@ -146,4 +165,11 @@ cards.addEventListener("click", (event) => {
   }
 });
 
-myLibrary.forEach(createCard);
+function addTemplateBooks() {
+  templateLibrary.forEach((book) =>
+    myLibrary.push(new Book(book.title, book.author, book.pages, book.read))
+  );
+  myLibrary.forEach(createCard);
+}
+
+tryButton.addEventListener("click", addTemplateBooks);

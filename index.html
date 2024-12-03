@@ -45,15 +45,9 @@
         <div class="controls">
           <ul>
             <li>
-              <button type="button" class="button" id="open-dialog">
+              <button type="button" class="button hidden" id="open-dialog">
                 Add a book
               </button>
-            </li>
-            <li>
-              <button type="button" class="button" disabled>Upload</button>
-            </li>
-            <li>
-              <button type="button" class="button" disabled>Share</button>
             </li>
           </ul>
         </div>
@@ -143,7 +137,15 @@
         </ul>
       </div>
       <div class="main">
-        <div class="content">
+        <div class="content welcome">
+          <div id="welcome-overlay" class="welcome-overlay">
+            <h1>Welcome to Your Library!</h1>
+            <p>You can add your first book here</p>
+            <button id="add-first-book-btn">Add a book</button>
+            <h2>OR</h2>
+            <p>Try it out. We'll add some example books</p>
+            <button id="add-template-books-btn">on us!</button>
+          </div>
           <div class="cards-container"></div>
           <div class="dialog-container">
             <dialog>
@@ -217,7 +219,7 @@
                 </div>
                 <div class="form-buttons">
                   <button name="submit" type="submit" class="submit-dialog">
-                    Save
+                    Add
                   </button>
                   <button
                     autofocus
@@ -225,7 +227,7 @@
                     onclick="this.closest('dialog').close('cancel')"
                     class="close-dialog"
                   >
-                    Cancel
+                    Close
                   </button>
                 </div>
               </form>
