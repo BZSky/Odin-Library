@@ -597,7 +597,7 @@ li > a {
 .book-card {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-template-areas: "image image" "title title" ". pages" "read delete";
+  grid-template-areas: "title title" "image author" "pages pages" "read delete";
 
   padding: 1.5rem;
   border: 6px;
@@ -636,6 +636,11 @@ li > a {
 .book-title {
   grid-area: title;
   font-weight: bold;
+  color: #000;
+}
+
+.book-author {
+  grid-area: author;
   color: #000;
 }
 
