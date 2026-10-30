@@ -29,7 +29,6 @@ const cards = document.querySelector(".cards-container");
 const contentContainer = document.querySelector(".content");
 const firstBookButton = document.querySelector("#add-first-book-btn");
 const tryButton = document.querySelector("#add-template-books-btn");
-let idCounter = 0;
 
 showButton.addEventListener("click", () => {
   dialog.showModal();
@@ -44,15 +43,16 @@ closeButton.addEventListener("click", () => {
 });
 
 function Book(title, author, pages, read = false) {
-  this.id = ++idCounter;
+  this.id = crypto.randomUUID();
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    return `${this.id}: ${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-  };
 }
+
+Book.prototype.getInfo = function () {
+  return `${this.id}: ${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+};
 
 function addBookToLibrary(event) {
   const data = new FormData(form);
@@ -65,7 +65,7 @@ function addBookToLibrary(event) {
     formData.title,
     formData.author,
     formData.pages,
-    formData.read
+    formData.read,
   );
   myLibrary.push(book);
   createCard(book);
@@ -86,8 +86,8 @@ function createCard(obj) {
     myLibrary.length % 3 === 0
       ? bookCovers[2]
       : myLibrary.length % 2 === 0
-      ? bookCovers[1]
-      : bookCovers[0];
+        ? bookCovers[1]
+        : bookCovers[0];
 
   const card = document.createElement("div");
   card.className = "book-card";
@@ -153,7 +153,7 @@ function changeBookReadStatus(bookId) {
       readIcon = "images/todo.png";
     }
     const buttonElement = document.querySelector(
-      `[data-id="${bookId}"] img.edit`
+      `[data-id="${bookId}"] img.edit`,
     );
     buttonElement.setAttribute("src", readIcon);
   }
@@ -164,7 +164,7 @@ form.addEventListener("submit", addBookToLibrary);
 cards.addEventListener("click", (event) => {
   const cardElement = event.target.closest(".book-card");
   if (!cardElement) return;
-  const bookId = +cardElement.dataset.id;
+  const bookId = cardElement.dataset.id;
   const card = myLibrary.find((c) => c.id === bookId);
 
   if (event.target.matches("img.delete")) {
@@ -176,7 +176,7 @@ cards.addEventListener("click", (event) => {
 
 function addTemplateBooks() {
   templateLibrary.forEach((book) =>
-    myLibrary.push(new Book(book.title, book.author, book.pages, book.read))
+    myLibrary.push(new Book(book.title, book.author, book.pages, book.read)),
   );
   myLibrary.forEach(createCard);
 }
