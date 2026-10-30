@@ -54,6 +54,10 @@ Book.prototype.getInfo = function () {
   return `${this.id}: ${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 };
 
+Book.prototype.toggleReadStatus = function () {
+  this.read = !this.read;
+};
+
 function addBookToLibrary(event) {
   const data = new FormData(form);
   let formData = {};
@@ -146,7 +150,7 @@ function changeBookReadStatus(bookId) {
   if (index > -1) {
     let readIcon;
 
-    myLibrary[index].read = !myLibrary[index].read;
+    myLibrary[index].toggleReadStatus();
     if (myLibrary[index].read) {
       readIcon = "images/done.png";
     } else {
